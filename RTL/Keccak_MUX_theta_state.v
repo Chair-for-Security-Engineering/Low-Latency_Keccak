@@ -60,7 +60,6 @@ module Keccak_MUX_theta_state #(
 
 	// theta
 
-	generate begin
 	reg[5*W-1:0] C, C_rot;
 	reg[25*W-1:0] A, D;
 
@@ -82,8 +81,7 @@ module Keccak_MUX_theta_state #(
 			  StateToReg = D;
 		 end
 		
-	end	
-	endgenerate
+	
 
 	// second MUX stage
 
