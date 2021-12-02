@@ -34,7 +34,7 @@ module keccak_chi_iota #(
         output reg[(SHARES**2)*25*W-1:0] Out
     );
 
-localparam IotaZero = 5*5*(W-1);
+localparam FreshSize = (SHARES*SHARES - SHARES)/2;
 reg[(SHARES**2)*25*W-1:0] ChiOut;
 
 
@@ -61,7 +61,7 @@ generate
           RowsInxD[(SHARES*x)+i] = In[RowIdx(i,x,y) + z];
 		 end
         end
-        RowsRand = FreshRand[25*z + 5*y +: 5*(SHARES*SHARES - SHARES)/2];
+        RowsRand = FreshRand[(5*z + y)*5*FreshSize +: 5*FreshSize];
       end
 
       always @(*) begin : ROW_SEL_OUT
